@@ -1,0 +1,151 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1yl1xrrogdko"]
+
+[ext_resource type="Texture2D" uid="uid://cgjhp6h8u2iw0" path="res://Assets/Textures/PuzzleTextures/Ducks.png" id="1_5kqol"]
+[ext_resource type="Script" path="res://src/UI/ScrollLevels.gd" id="1_73uwu"]
+[ext_resource type="Theme" uid="uid://cnfd7471im5h6" path="res://src/UI/Game_theme.tres" id="1_q2als"]
+[ext_resource type="Texture2D" uid="uid://b47lguhefror7" path="res://Assets/Textures/PuzzleTextures/Anime/Anime_13.png" id="3_05n81"]
+[ext_resource type="Texture2D" uid="uid://dil0i6y4amgh2" path="res://Assets/Textures/PuzzleTextures/Fantasy/Fantasy_10.png" id="4_c742f"]
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_q2als")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_q2als")
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -142.0
+offset_top = -65.0
+offset_right = -72.0
+offset_bottom = -34.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(2, 2)
+theme = ExtResource("1_q2als")
+text = "Settings"
+
+[node name="Panel" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -957.0
+offset_top = -326.0
+offset_right = 966.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -259.0
+offset_right = -4.0
+offset_bottom = 258.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 3
+script = ExtResource("1_73uwu")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 612
+
+[node name="Animals" type="Control" parent="Panel/Panel/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="Panel/Panel/ScrollContainer/HBoxContainer/Animals"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(0.5, 0.5)
+mouse_filter = 1
+icon = ExtResource("1_5kqol")
+
+[node name="Anime" type="Control" parent="Panel/Panel/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="Panel/Panel/ScrollContainer/HBoxContainer/Anime"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(0.5, 0.5)
+mouse_filter = 1
+icon = ExtResource("3_05n81")
+
+[node name="Cars" type="Control" parent="Panel/Panel/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="Panel/Panel/ScrollContainer/HBoxContainer/Cars"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(0.5, 0.5)
+mouse_filter = 1
+icon = ExtResource("1_5kqol")
+
+[node name="Fantasy" type="Control" parent="Panel/Panel/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="Panel/Panel/ScrollContainer/HBoxContainer/Fantasy"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(0.5, 0.5)
+mouse_filter = 1
+icon = ExtResource("4_c742f")
+
+[node name="Futuristic" type="Control" parent="Panel/Panel/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="Panel/Panel/ScrollContainer/HBoxContainer/Futuristic"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(0.5, 0.5)
+mouse_filter = 1
+icon = ExtResource("1_5kqol")
+
+[node name="Space" type="Control" parent="Panel/Panel/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="Panel/Panel/ScrollContainer/HBoxContainer/Space"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(0.5, 0.5)
+mouse_filter = 1
+icon = ExtResource("1_5kqol")
+
+[connection signal="mouse_entered" from="Panel/Panel/ScrollContainer" to="Panel/Panel/ScrollContainer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/Panel/ScrollContainer" to="Panel/Panel/ScrollContainer" method="_on_mouse_exited"]

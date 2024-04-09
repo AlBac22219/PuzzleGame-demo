@@ -1,0 +1,19 @@
+{
+	"disabled_build_options": {
+		"disable_3d": true,
+		"disable_3d_physics": true,
+		"disable_navigation": true,
+		"openxr": false
+	},
+	"disabled_classes": [
+		"Mesh",
+		"MeshLibrary",
+		"MultiMesh",
+		"NavigationMesh",
+		"Node3D",
+		"SkeletonIK3D",
+		"Sky",
+		"WorldEnvironment"
+	],
+	"type": "build_profile"
+}

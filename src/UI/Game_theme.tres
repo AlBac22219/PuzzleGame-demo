@@ -1,0 +1,34 @@
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://cnfd7471im5h6"]
+
+[ext_resource type="Texture2D" uid="uid://dfywb3vs6u8ys" path="res://Assets/Textures/UI/CheckButton/checked.png" id="1_y2joy"]
+[ext_resource type="Texture2D" uid="uid://dkrp7ryw2fkyr" path="res://Assets/Textures/UI/CheckButton/checked_disabled.png" id="2_f1eqo"]
+[ext_resource type="Texture2D" uid="uid://kh3ixufm14d4" path="res://Assets/Textures/UI/CheckButton/checked_disabled_mirrored.png" id="3_lid8n"]
+[ext_resource type="Texture2D" uid="uid://c827jcm8k805q" path="res://Assets/Textures/UI/CheckButton/checked_mirrored.png" id="4_dud31"]
+[ext_resource type="Texture2D" uid="uid://dk3o3xhb5syjy" path="res://Assets/Textures/UI/CheckButton/unchecked.png" id="5_jj8x7"]
+[ext_resource type="Texture2D" uid="uid://cf3s2ebglrc6" path="res://Assets/Textures/UI/CheckButton/unchecked_disabled.png" id="6_13h1g"]
+[ext_resource type="Texture2D" uid="uid://bb1nfjualfxs0" path="res://Assets/Textures/UI/CheckButton/unchecked_disabled_mirrored.png" id="7_27kds"]
+[ext_resource type="Texture2D" uid="uid://dmpaj6lukd8nc" path="res://Assets/Textures/UI/CheckButton/unchecked_mirrored.png" id="8_pa20c"]
+[ext_resource type="FontFile" uid="uid://cslt88svvtgf6" path="res://Assets/Fonts/Softie Cyr.ttf" id="9_1qhcg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_no435"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8wln2"]
+bg_color = Color(0.71, 0.71, 0.71, 0.973)
+border_color = Color(0.164706, 0.164706, 0.164706, 1)
+border_blend = true
+shadow_color = Color(0.196078, 0.196078, 0.196078, 0.588235)
+shadow_size = 10
+
+[resource]
+default_font = ExtResource("9_1qhcg")
+Button/fonts/font = ExtResource("9_1qhcg")
+Button/styles/focus = SubResource("StyleBoxEmpty_no435")
+CheckButton/icons/checked = ExtResource("1_y2joy")
+CheckButton/icons/checked_disabled = ExtResource("2_f1eqo")
+CheckButton/icons/checked_disabled_mirrored = ExtResource("3_lid8n")
+CheckButton/icons/checked_mirrored = ExtResource("4_dud31")
+CheckButton/icons/unchecked = ExtResource("5_jj8x7")
+CheckButton/icons/unchecked_disabled = ExtResource("6_13h1g")
+CheckButton/icons/unchecked_disabled_mirrored = ExtResource("7_27kds")
+CheckButton/icons/unchecked_mirrored = ExtResource("8_pa20c")
+Panel/styles/panel = SubResource("StyleBoxFlat_8wln2")

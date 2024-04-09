@@ -1,0 +1,207 @@
+[gd_scene load_steps=11 format=3 uid="uid://8n0semen0ad1"]
+
+[ext_resource type="Script" path="res://src/UI/change_language_gui.gd" id="1_rykdp"]
+[ext_resource type="Texture2D" uid="uid://5rl80yu7cydi" path="res://Assets/Textures/UI/Languages/Russian_language.png" id="2_gbvry"]
+[ext_resource type="Theme" uid="uid://cnfd7471im5h6" path="res://src/UI/Game_theme.tres" id="2_m5ds3"]
+[ext_resource type="Texture2D" uid="uid://cydqeoesjbui5" path="res://Assets/Textures/Cross.png" id="3_cr4xu"]
+[ext_resource type="Texture2D" uid="uid://c2vb5rn0oi2h1" path="res://Assets/Textures/UI/Languages/English_language.png" id="3_vwlau"]
+[ext_resource type="Texture2D" uid="uid://6jf42j0smr6a" path="res://Assets/Textures/UI/Languages/Turkish_language.png" id="4_jn7yy"]
+[ext_resource type="Texture2D" uid="uid://cxhopydsc55ka" path="res://Assets/Textures/UI/StyleMode/day_mode.png" id="7_ws078"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8jejx"]
+font_size = 32
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3s8pa"]
+font_size = 156
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xfjr2"]
+font_size = 64
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="Change_language_gui" type="Control" node_paths=PackedStringArray("night_mode_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rykdp")
+game_theme = ExtResource("2_m5ds3")
+night_mode_button = NodePath("Language_panel/Night_mode_button")
+
+[node name="Language_panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -240.0
+offset_right = 360.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Select_language_label" type="Label" parent="Language_panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.261806
+anchor_top = 0.0458333
+anchor_right = 0.738194
+anchor_bottom = 0.0916667
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "SELECT_LANGUAGE_TEXT"
+label_settings = SubResource("LabelSettings_8jejx")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Russian_language" type="Button" parent="Language_panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -389.0
+offset_top = -179.0
+offset_right = 131.0
+offset_bottom = 341.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+icon = ExtResource("2_gbvry")
+flat = true
+
+[node name="Label_for_russian" type="Label" parent="Language_panel/Russian_language"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -93.75
+offset_top = -177.5
+offset_right = 541.25
+offset_bottom = 35.5
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.3, 0.3)
+text = "Русский
+"
+label_settings = SubResource("LabelSettings_3s8pa")
+
+[node name="Turkish_language" type="Button" parent="Language_panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 78.0
+offset_top = -178.0
+offset_right = 598.0
+offset_bottom = 342.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+icon = ExtResource("4_jn7yy")
+flat = true
+icon_alignment = 1
+
+[node name="Label_for_english" type="Label" parent="Language_panel/Turkish_language"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -62.7501
+offset_top = -164.444
+offset_right = 158.25
+offset_bottom = -76.4444
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.7, 0.7)
+text = "Türkçe"
+label_settings = SubResource("LabelSettings_xfjr2")
+
+[node name="English_language" type="Button" parent="Language_panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.0
+offset_top = -182.0
+offset_right = 365.0
+offset_bottom = 338.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+icon = ExtResource("3_vwlau")
+flat = true
+
+[node name="Label_for_english" type="Label" parent="Language_panel/English_language"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -78.75
+offset_top = -163.75
+offset_right = 142.25
+offset_bottom = -75.7501
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.7, 0.7)
+text = "English"
+label_settings = SubResource("LabelSettings_xfjr2")
+
+[node name="Close_button" type="Button" parent="Language_panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -36.0001
+offset_right = 662.0
+offset_bottom = 698.0
+grow_horizontal = 0
+scale = Vector2(0.05, 0.05)
+icon = ExtResource("3_cr4xu")
+flat = true
+
+[node name="Night_mode_button" type="Button" parent="Language_panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -104.0
+offset_top = -105.0
+offset_right = 416.0
+offset_bottom = 415.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.2, 0.2)
+icon = ExtResource("7_ws078")
+flat = true
+
+[connection signal="pressed" from="Language_panel/Russian_language" to="." method="_on_russian_language_pressed"]
+[connection signal="pressed" from="Language_panel/Turkish_language" to="." method="_on_turkish_language_pressed"]
+[connection signal="pressed" from="Language_panel/English_language" to="." method="_on_english_language_pressed"]
+[connection signal="pressed" from="Language_panel/Close_button" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="Language_panel/Night_mode_button" to="." method="_on_night_mode_button_pressed"]

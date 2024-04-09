@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://tv8gp1fwbqid"]
+
+[ext_resource type="Script" path="res://src/Puzzle/puzzle.gd" id="2_eg4hb"]
+[ext_resource type="FontFile" uid="uid://cslt88svvtgf6" path="res://Assets/Fonts/Softie Cyr.ttf" id="2_lum84"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sm5ef"]
+font = ExtResource("2_lum84")
+font_size = 64
+font_color = Color(0, 0, 0, 0.862745)
+outline_size = 2
+outline_color = Color(1, 1, 1, 0.862745)
+shadow_color = Color(1, 1, 1, 0.862745)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hmqw"]
+
+[node name="Puzzle" type="CharacterBody2D" node_paths=PackedStringArray("label_for_number", "puzzle_sprite")]
+script = ExtResource("2_eg4hb")
+label_for_number = NodePath("NumberOfPuzzle")
+puzzle_sprite = NodePath("Puzzle_sprite")
+
+[node name="Puzzle_sprite" type="Sprite2D" parent="."]
+
+[node name="NumberOfPuzzle" type="Label" parent="." groups=["numbersOfPuzzle"]]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -44.0
+offset_right = 20.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "1"
+label_settings = SubResource("LabelSettings_sm5ef")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_0hmqw")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -1,0 +1,182 @@
+[gd_scene load_steps=11 format=3 uid="uid://demioc7f6po50"]
+
+[ext_resource type="Script" path="res://src/UI/win_panel.gd" id="1_djqco"]
+[ext_resource type="Texture2D" uid="uid://btt1rvxft5r3m" path="res://Assets/Textures/UI/coin.png" id="2_hlo0b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_go73c"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_muua5"]
+font_size = 34
+
+[sub_resource type="LabelSettings" id="LabelSettings_xoj2g"]
+font_size = 34
+
+[sub_resource type="LabelSettings" id="LabelSettings_bfr4n"]
+font_size = 34
+font_color = Color(0.945098, 0.929412, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ftf05"]
+font_size = 34
+font_color = Color(0.945098, 0.929412, 0, 1)
+
+[sub_resource type="Animation" id="Animation_75eit"]
+resource_name = "Add_coins_anim"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Add_coins_label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.4),
+"transitions": PackedFloat32Array(0.659754, 4, 1),
+"update": 0,
+"values": [Vector2(475, 348), Vector2(475, 413), Vector2(475, 218)]
+}
+
+[sub_resource type="Animation" id="Animation_gcc5a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Add_coins_label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(475, 348)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wdthq"]
+_data = {
+"Add_coins_anim": SubResource("Animation_75eit"),
+"RESET": SubResource("Animation_gcc5a")
+}
+
+[node name="win_panel" type="Control" node_paths=PackedStringArray("add_coins", "anim_player", "coins_label", "time_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_djqco")
+add_coins = NodePath("Panel/Add_coins_label")
+anim_player = NodePath("Panel/AnimationPlayer")
+coins_label = NodePath("Panel/Coins_label")
+time_label = NodePath("Panel/Time_label")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -240.0
+offset_right = 360.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Win_text" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -202.0
+offset_right = 202.0
+offset_bottom = 67.0
+grow_horizontal = 2
+text = "WIN_PANEL_TEXT"
+label_settings = SubResource("LabelSettings_go73c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Time_label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 34.0
+offset_top = -120.0
+offset_right = 227.0
+offset_bottom = -73.0
+grow_vertical = 2
+text = "TIME_LABEL"
+label_settings = SubResource("LabelSettings_muua5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player_coins_label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -269.0
+offset_top = -120.0
+offset_right = -27.0
+offset_bottom = -73.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "PLAYER_COINS"
+label_settings = SubResource("LabelSettings_xoj2g")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Coins_label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -251.0
+offset_top = -55.0
+offset_right = -211.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_bfr4n")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel/Coins_label"]
+position = Vector2(212, 27)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_hlo0b")
+
+[node name="Add_coins_label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 475.0
+offset_top = 348.0
+offset_right = 667.0
+offset_bottom = 395.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "ADD_COINS"
+label_settings = SubResource("LabelSettings_ftf05")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel"]
+libraries = {
+"": SubResource("AnimationLibrary_wdthq")
+}
+speed_scale = 0.6
+
+[connection signal="animation_finished" from="Panel/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

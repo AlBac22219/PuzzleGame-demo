@@ -1,0 +1,176 @@
+[gd_scene load_steps=13 format=3 uid="uid://d3vu4k4u3h864"]
+
+[ext_resource type="Script" path="res://src/UI/ui.gd" id="1_1lslf"]
+[ext_resource type="Theme" uid="uid://cnfd7471im5h6" path="res://src/UI/Game_theme.tres" id="1_lgie7"]
+[ext_resource type="Script" path="res://src/UI/Puzzle_panel.gd" id="1_tlbwe"]
+[ext_resource type="PackedScene" uid="uid://tv8gp1fwbqid" path="res://src/Puzzle/puzzle.tscn" id="2_y8p2e"]
+[ext_resource type="Script" path="res://src/UI/Final_mage_panel.gd" id="3_548yn"]
+[ext_resource type="Script" path="res://src/UI/Player_marker.gd" id="3_j5oo0"]
+[ext_resource type="Script" path="res://src/UI/Score_panel.gd" id="3_qa7j6"]
+[ext_resource type="Texture2D" uid="uid://p8kpp5xpvp07" path="res://Assets/Textures/UI/Languages/Language_setting_button.PNG" id="6_o7k3u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fy1ex"]
+size = Vector2(140, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8wi7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7njns"]
+line_spacing = 0.0
+font_size = 34
+shadow_size = 2
+shadow_color = Color(0.14902, 0.14902, 0.14902, 0.835294)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ykla7"]
+font_size = 30
+shadow_size = 2
+shadow_color = Color(0.0862745, 0.0862745, 0.0862745, 0.631373)
+
+[node name="UI" type="Control" node_paths=PackedStringArray("puzzle_panel", "puzzle_fot_setting", "final_image_panel", "timer", "score_panel", "score_timer", "player")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_lgie7")
+script = ExtResource("1_1lslf")
+puzzle_panel = NodePath("Main_panel/Puzzle_panel")
+puzzle_fot_setting = NodePath("Puzzle")
+final_image_panel = NodePath("Main_panel/Final_mage_panel")
+timer = NodePath("Main_panel/Score_panel/Timer")
+score_panel = NodePath("Main_panel/Score_panel")
+score_timer = NodePath("Main_panel/Score_panel/Timer")
+player = NodePath("Main_panel/Puzzle_panel/Player_marker")
+
+[node name="Main_panel" type="Panel" parent="."]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Puzzle_panel" type="Panel" parent="Main_panel" node_paths=PackedStringArray("puzzle", "marker_for_puzzles", "player_position")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -512.0
+offset_right = 512.0
+offset_bottom = 1024.0
+grow_horizontal = 2
+script = ExtResource("1_tlbwe")
+puzzle = NodePath("../../Puzzle")
+marker_for_puzzles = NodePath("Marker_for_puzzles")
+player_position = NodePath("Player_marker")
+metadata/_edit_use_anchors_ = true
+
+[node name="ReferenceRect" type="ReferenceRect" parent="Main_panel/Puzzle_panel"]
+layout_mode = 1
+offset_right = 1024.0
+offset_bottom = 1024.0
+
+[node name="Player_marker" type="Marker2D" parent="Main_panel/Puzzle_panel" node_paths=PackedStringArray("timer_for_movement") groups=["Player"]]
+script = ExtResource("3_j5oo0")
+timer_for_movement = NodePath("Timer_for_movement")
+
+[node name="Area2D" type="Area2D" parent="Main_panel/Puzzle_panel/Player_marker" groups=["Player"]]
+position = Vector2(-448, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Main_panel/Puzzle_panel/Player_marker/Area2D"]
+light_mask = 2
+position = Vector2(448, 0)
+shape = SubResource("RectangleShape2D_fy1ex")
+
+[node name="Timer_for_movement" type="Timer" parent="Main_panel/Puzzle_panel/Player_marker"]
+one_shot = true
+
+[node name="Marker_for_puzzles" type="Marker2D" parent="Main_panel/Puzzle_panel" groups=["Check_area"]]
+
+[node name="Area2D" type="Area2D" parent="Main_panel/Puzzle_panel/Marker_for_puzzles" groups=["Check_area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Main_panel/Puzzle_panel/Marker_for_puzzles/Area2D"]
+shape = SubResource("RectangleShape2D_s8wi7")
+
+[node name="Score_panel" type="Panel" parent="Main_panel" node_paths=PackedStringArray("time_label")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -362.0
+offset_bottom = 1080.0
+grow_horizontal = 0
+script = ExtResource("3_qa7j6")
+time_label = NodePath("Time_label")
+metadata/_edit_use_anchors_ = true
+
+[node name="Time_label" type="Label" parent="Main_panel/Score_panel"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 48.0
+offset_right = 347.0
+offset_bottom = 93.0
+text = "TIME_LABEL"
+label_settings = SubResource("LabelSettings_7njns")
+
+[node name="Timer" type="Timer" parent="Main_panel/Score_panel"]
+autostart = true
+
+[node name="Numbers_of_image_label" type="Label" parent="Main_panel/Score_panel"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 109.0
+offset_right = 297.0
+offset_bottom = 217.0
+text = "NUMBERS_ON_IMAGE"
+label_settings = SubResource("LabelSettings_ykla7")
+
+[node name="Show_numbers_button" type="CheckButton" parent="Main_panel/Score_panel/Numbers_of_image_label"]
+layout_mode = 0
+offset_left = 255.0
+offset_right = 779.0
+offset_bottom = 520.0
+scale = Vector2(0.2, 0.2)
+metadata/_edit_group_ = true
+
+[node name="Language_setting_button" type="Button" parent="Main_panel/Score_panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -59.0001
+offset_top = -113.0
+offset_right = 1229.0
+offset_bottom = 668.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.1, 0.1)
+icon = ExtResource("6_o7k3u")
+
+[node name="Final_mage_panel" type="Panel" parent="Main_panel" node_paths=PackedStringArray("puzzle", "final_image")]
+layout_direction = 1
+layout_mode = 1
+offset_right = 384.0
+offset_bottom = 384.0
+script = ExtResource("3_548yn")
+puzzle = NodePath("../../Puzzle")
+final_image = NodePath("Final_images")
+metadata/_edit_use_anchors_ = true
+
+[node name="Final_images" type="Sprite2D" parent="Main_panel/Final_mage_panel"]
+position = Vector2(192, 192)
+
+[node name="Puzzle" parent="." instance=ExtResource("2_y8p2e")]
+visible = false
+
+[connection signal="game_over" from="Main_panel/Puzzle_panel" to="." method="_on_puzzle_panel_game_over"]
+[connection signal="area_entered" from="Main_panel/Puzzle_panel/Player_marker/Area2D" to="Main_panel/Puzzle_panel" method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Main_panel/Puzzle_panel/Player_marker/Timer_for_movement" to="Main_panel/Puzzle_panel" method="_on_timer_for_movement_timeout"]
+[connection signal="timeout" from="Main_panel/Puzzle_panel/Player_marker/Timer_for_movement" to="Main_panel/Puzzle_panel/Player_marker" method="_on_timerfor_movement_timeout"]
+[connection signal="timeout" from="Main_panel/Score_panel/Timer" to="Main_panel/Score_panel" method="_on_timer_timeout"]
+[connection signal="pressed" from="Main_panel/Score_panel/Numbers_of_image_label/Show_numbers_button" to="." method="_on_check_button_pressed"]
+[connection signal="pressed" from="Main_panel/Score_panel/Language_setting_button" to="." method="_on_button_pressed"]
