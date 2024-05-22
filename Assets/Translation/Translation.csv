@@ -5,3 +5,13 @@ MINUTES_FOR_LABEL,m.,м.,dk.
 HOURS_FOR_LABEL,h.,ч.,s.
 NUMBERS_ON_IMAGE,Show numbers  \non puzzles,Показать номера\nна пазлах,Bulmacalardaki\nsayıları göster
 SELECT_LANGUAGE_TEXT,Choose your language,Выберите ваш язык,Dilinizi seçin
+Animals,Animals,Животные,
+Anime,Anime,Аниме,
+Cars,Cars,Автомобили,
+Fantasy,Fantasy,Сказка,
+Technology,Technology,Технологии,
+Space,Space,Космос,
+Test,Test,Тест,
+UNLOCK_LEVEL_TEXT,Unlock level,Открыть уровень,
+YES_BUTTON,Yes,Да,
+NO_BUTTON,No,Нет,

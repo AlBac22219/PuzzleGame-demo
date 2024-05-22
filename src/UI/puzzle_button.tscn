@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3xpf2f5mktm2"]
+
+[ext_resource type="Texture2D" uid="uid://dhbcfr18iuh7m" path="res://Assets/Textures/PuzzleTextures/Animals/Animals_01.png" id="1_8pnum"]
+[ext_resource type="Script" path="res://src/UI/puzzle_button.gd" id="1_l627c"]
+
+[node name="Puzzle_button" type="Control" node_paths=PackedStringArray("button")]
+custom_minimum_size = Vector2(512, 512)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1408.0
+offset_bottom = -568.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l627c")
+button = NodePath("Button")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(512, 512)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(512, 512)
+layout_mode = 1
+offset_right = 1032.0
+offset_bottom = 1032.0
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("1_8pnum")

@@ -1,0 +1,168 @@
+[gd_scene load_steps=10 format=3 uid="uid://vd78an1rk405"]
+
+[ext_resource type="Texture2D" uid="uid://dhbcfr18iuh7m" path="res://Assets/Textures/PuzzleTextures/Animals/Animals_01.png" id="1_hda1h"]
+[ext_resource type="Script" path="res://src/UI/main_menu_button.gd" id="1_vmkt3"]
+[ext_resource type="Theme" uid="uid://cnfd7471im5h6" path="res://src/UI/Game_theme.tres" id="2_ert72"]
+[ext_resource type="Texture2D" uid="uid://btt1rvxft5r3m" path="res://Assets/Textures/UI/coin.png" id="3_dlaxq"]
+[ext_resource type="Texture2D" uid="uid://bp1q0it2rxdv1" path="res://Assets/Textures/UI/lock_unlock/lock-outlined-padlock-symbol-for-security-interface_icon-icons.com_57803.png" id="4_ja0g0"]
+
+[sub_resource type="Animation" id="Animation_lc105"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pqys5"]
+resource_name = "change_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.137255)]
+}
+
+[sub_resource type="Animation" id="Animation_7hjtb"]
+resource_name = "changed_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.137255), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ps6d4"]
+_data = {
+"RESET": SubResource("Animation_lc105"),
+"change_animation": SubResource("Animation_pqys5"),
+"changed_animation": SubResource("Animation_7hjtb")
+}
+
+[node name="MainMenuButton" type="Control" node_paths=PackedStringArray("button", "animation_player", "timer_for_animation", "lock", "price_label", "container_with_price", "level_name")]
+custom_minimum_size = Vector2(512, 512)
+layout_mode = 3
+anchor_right = 0.267
+anchor_bottom = 0.474
+offset_right = -0.640015
+offset_bottom = 0.0799561
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_vmkt3")
+button = NodePath("Panel/Button")
+animation_player = NodePath("Panel/AnimationPlayer")
+timer_for_animation = NodePath("Panel/TimerForAnimation")
+lock = NodePath("Panel/TextureRect")
+price_label = NodePath("Panel/HBoxContainer/Label")
+container_with_price = NodePath("Panel/HBoxContainer")
+level_name = NodePath("Panel/Label")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(512, 512)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 1
+offset_right = 1032.0
+offset_bottom = 1032.0
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("1_hda1h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel"]
+libraries = {
+"": SubResource("AnimationLibrary_ps6d4")
+}
+
+[node name="TimerForAnimation" type="Timer" parent="Panel"]
+one_shot = true
+autostart = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.5
+offset_top = -65.0
+offset_right = 100.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_ert72")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "1234"
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("3_dlaxq")
+expand_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+custom_minimum_size = Vector2(512, 512)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 384.0
+offset_bottom = 384.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("4_ja0g0")
+
+[node name="Label" type="Label" parent="Panel"]
+custom_minimum_size = Vector2(345, 77)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.149
+anchor_right = 0.851
+anchor_bottom = 0.15
+offset_left = 0.211998
+offset_right = -0.212006
+offset_bottom = 0.199997
+grow_horizontal = 2
+theme = ExtResource("2_ert72")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 54
+text = "LEVEL_NAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]
+[connection signal="animation_finished" from="Panel/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Panel/TimerForAnimation" to="." method="_on_timer_for_animation_timeout"]

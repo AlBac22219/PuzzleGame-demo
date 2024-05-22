@@ -2,6 +2,7 @@ extends Node
 
 var night_mode = false
 var money = 0
+var global_price = 1000
 
 func load_screen_to_scene(target: String) -> void:
 	
@@ -30,3 +31,6 @@ func set_money(newMoney):
 
 func get_money():
 	return money
+
+func get_global_price():
+	return global_price
